@@ -22,7 +22,7 @@ A major focus of this project was ensuring data accuracy before analysis. Key st
 - **Revenue Validation:** Recalculated revenue by cross-checking unit price × quantity to correct mismatches.  
 - **Null and Missing Values:** Identified incomplete records and applied filtering rules to maintain consistency.
 
-> **_Key Highlight: Handling JOIN-Induced Duplicates_** - you can see the step by step validation here: 
+> **_Key Highlight: Handling JOIN-Induced Duplicates_** - you can see the step by step validation here: [SQL_Queries/Key_clearning_step.sql](SQL_Queries/Key_clearning_step.sql)
 
 
 ### 2. Data Analysis  
