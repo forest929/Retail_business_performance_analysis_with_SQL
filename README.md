@@ -20,7 +20,9 @@ A key challenge was **duplicate transaction IDs**, which caused inaccuracies in 
 A major focus of this project was ensuring data accuracy before analysis. Key steps included:  
 - **Duplicate Handling:** Detected and removed ~200 duplicate `transaction_line_item_id` values that were inflating revenue calculations.  
 - **Revenue Validation:** Recalculated revenue by cross-checking unit price × quantity to correct mismatches.  
-- **Null and Missing Values:** Identified incomplete records and applied filtering rules to maintain consistency.  
+- **Null and Missing Values:** Identified incomplete records and applied filtering rules to maintain consistency.
+
+> **_Key Highlight: Handling JOIN-Induced Duplicates_** - you can see the step by step validation here: 
 
 
 ### 2. Data Analysis  
