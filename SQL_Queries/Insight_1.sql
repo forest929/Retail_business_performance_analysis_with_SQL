@@ -32,3 +32,27 @@ FROM clean_order_product
 WHERE product_category IS NOT NULL --STEP 3
 GROUP BY ROLLUP(product_category)
 ORDER BY total_revenue DESC, product_category
+
+NOTE: This query includes critical data cleaning procedures, with detailed documentation of data quality issues identified and remediation methods applied.
+
+/*
+DATA CLEANING NOTES: Duplicate product_id and order_transaction_id entries affect the accuracy of calculations involving costs!
+
+Q1: Why did the record count increase from 11,038 to 11,323 after JOIN?
+A1: Duplicate product_id in the products table (same product, different colors) and duplicate order_transaction_id records in the order_transactions table. After inspecting the duplicate records, I believe that keeping the first record is sufficient.
+SOLUTION: Remove duplicates using transaction_line_item_id (unique identifier).
+REASONING STEPS: see below - Q1-A1-KEY STEP.
+
+Q2: What are the records with NULL category?
+A2: Possibly gift/promotional products in orders.
+SOLUTION: Exclude from analysis (no product_category or cost_price data anyway).
+
+Q3: SUM(revenue) vs SUM(ABS(revenue) * quantity) - which is correct?
+A3: SUM(revenue) is more accurate (revenue already calculated correctly in the source)
+SOLUTION: Use SUM(revenue) directly.
+
+Q4: What are the currencies used?
+A4: GBP is the only currency.
+
+FINAL RESULT: Cleaned 10,896 records with accurate revenue/cost calculations.
+*/
